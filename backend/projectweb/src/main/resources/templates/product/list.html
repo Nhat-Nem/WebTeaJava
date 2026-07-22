@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sản phẩm | TeaShop</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Banner -->
+<section class="bg-success text-white py-5">
+    <div class="container text-center">
+        <h1 class="fw-bold">Sản phẩm</h1>
+        <p>Khám phá các loại trà và bánh ngon nhất của TeaShop</p>
+    </div>
+</section>
+
+<!-- Content -->
+<div class="container my-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    Danh mục
+                </div>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="#" class="list-group-item list-group-item-action active">
+                        Tất cả
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Trà
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Trà sữa
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Bánh
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Combo
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h5>Tìm kiếm</h5>
+
+                    <div class="input-group">
+
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Tên sản phẩm">
+
+                        <button class="btn btn-success">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Product -->
+        <div class="col-lg-9">
+
+            <div class="row">
+
+                <div class="col-md-4 mb-4"
+                     th:each="product : ${products}">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img th:src="@{${product.image}}"
+                             class="card-img-top"
+                             style="height:220px;object-fit:cover;">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title"
+                                th:text="${product.name}">
+                            </h5>
+
+                            <p class="text-muted"
+                               th:text="${product.description}">
+                            </p>
+
+                            <h4 class="text-danger"
+                                th:text="${#numbers.formatDecimal(product.price,0,'COMMA',0,'POINT')} + ' đ'">
+                            </h4>
+
+                        </div>
+
+                        <div class="card-footer bg-white border-0">
+
+                            <a th:href="@{/products/{id}(id=${product.id})}"
+                               class="btn btn-outline-success w-100 mb-2">
+                                <i class="bi bi-eye"></i>
+                                Xem chi tiết
+                            </a>
+
+                            <button class="btn btn-success w-100">
+                                <i class="bi bi-cart-plus"></i>
+                                Thêm vào giỏ
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-4">
+
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+
+                    <li class="page-item active">
+                        <a class="page-link">1</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">2</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">3</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">Next</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

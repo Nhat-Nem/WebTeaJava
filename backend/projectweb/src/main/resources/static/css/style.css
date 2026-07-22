@@ -1,0 +1,26 @@
+body{
+    background:#f8f9fa;
+}
+
+.navbar-brand{
+    font-weight:bold;
+}
+
+.card{
+    transition:.3s;
+    border:none;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.btn-success{
+    background:#4CAF50;
+    border:none;
+}
+
+footer{
+    margin-top:60px;
+}
