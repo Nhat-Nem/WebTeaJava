@@ -133,6 +133,8 @@ function Products() {
             data.append("active", formData.active);
             data.append("image", formData.image)
             
+            console.log(data);
+    console.log(data instanceof FormData);
 
             const res = await api.post('/products', data)
 
