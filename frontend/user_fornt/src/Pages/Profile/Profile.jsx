@@ -21,7 +21,7 @@ function Profile() {
         Pending:"Chờ xác nhận",
         Confirmed:"Đã xác nhận",
         Preparing:"Đang chuẩn bị",
-        Delivering:"Đang giao",
+        Shipping:"Đang giao",
         Completed:"Hoàn thành",
         Cancelled:"Đã huỷ"
     }
@@ -152,7 +152,7 @@ function Profile() {
                 <h3>Thông tin tài khoản</h3>
                 <p>Xin chào, <strong> {user.name} </strong> </p>
                 <div className="content">
-                    {!user.role !== "ADMIN" && (
+                    {user.role !== "ADMIN" && (
                         <div className="order">
                             <p><strong>Danh sách đơn hàng</strong></p>
 
