@@ -1,10 +1,10 @@
-import ProductCard from '../../components/ProductCard/ProductCard'
+import ProductCard from "../../Components/ProductCard/ProductCard"
 import { useState, useEffect } from 'react'
 import api from "../../service/api"
 import "../Dashboard/Dashboard.css"
 import { Link, useSearchParams } from "react-router-dom"
-import Pagination from "../../components/Panigation/Panigation"
-import "../../components/Panigation/Panigation.css"
+import Panigation from "../../Components/Panigation"
+import "../../Components/Panigation/Panigation.css"
 
 function Dashboard({setCart}) {  
 

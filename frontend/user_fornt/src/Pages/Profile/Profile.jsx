@@ -3,8 +3,8 @@ import api from '../../service/api'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import Pagination from '../../components/Panigation/Panigation'
-import "../../components/Panigation/Panigation.css"
+import Pagination from '../../Components/Panigation/Panigation'
+import "../../Components/Panigation/Panigation.css"
 
 function Profile() {
 
