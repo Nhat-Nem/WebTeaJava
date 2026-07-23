@@ -64,7 +64,8 @@ public class SecurityConfig {
 
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://webteajava-admin.onrender.com"
+                "https://webteajava-admin.onrender.com",
+                "https://webteajava-user.onrender.com"
         ));
 
         configuration.setAllowedMethods(List.of(

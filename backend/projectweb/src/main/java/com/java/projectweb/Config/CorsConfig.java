@@ -15,7 +15,8 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                                 "http://localhost:5173",
-                                "https://webteajava-admin.onrender.com"
+                                "https://webteajava-admin.onrender.com",
+                                "https://webteajava-user.onrender.com"
                         )
                         .allowedMethods("*")
                         .allowedHeaders("*")
