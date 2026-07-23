@@ -51,6 +51,9 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
 
+        System.out.println("METHOD = " + request.getMethod());
+        System.out.println("URI = " + request.getRequestURI());
+
         filterChain.doFilter(request, response);
     }
 }
