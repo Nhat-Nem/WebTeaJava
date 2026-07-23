@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import api from "../../service/api"
 import "../Dashboard/Dashboard.css"
 import { Link, useSearchParams } from "react-router-dom"
-import Panigation from "../../Components/Panigation/Panigation"
+import Pagination from "../../Components/Panigation/Panigation"
 import "../../Components/Panigation/Panigation.css"
 
 function Dashboard({setCart}) {  
