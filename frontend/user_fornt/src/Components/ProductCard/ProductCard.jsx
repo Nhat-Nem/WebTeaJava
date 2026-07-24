@@ -6,7 +6,7 @@ function ProductCard({product}) {
         <div className="product-card">
             <Link to={`/product/${product.id}`}>
                 <div className="product-img">
-                    <img src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${product.image}`}/>
+                    <img src={product.img}/>
                 </div>
             </Link>
             
