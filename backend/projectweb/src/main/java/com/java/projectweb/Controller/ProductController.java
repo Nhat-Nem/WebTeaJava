@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -26,7 +28,8 @@ public class ProductController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    private final String UPLOAD_DIR = System.getProperty("user.dir") + "/uploads/products";
+    @Autowired
+    private Cloudinary cloudinary;
 
     @Autowired
     private ProductRepository productRepository;
@@ -59,21 +62,12 @@ public class ProductController {
             @RequestParam MultipartFile image
             ) {
         try {
-            File dir = new File(UPLOAD_DIR);
+            Map uploadResult = cloudinary.uploader().upload(
+                    image.getBytes(),
+                    ObjectUtils.emptyMap()
+            );
 
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-
-            String fileName = UUID.randomUUID() + "_" + image.getOriginalFilename();
-
-            File destination = new File(UPLOAD_DIR + "/" + fileName);
-
-            image.transferTo(destination);
-
-            System.out.println("SAVE TO = " + destination.getAbsolutePath());
-            System.out.println("EXISTS = " + destination.exists());
-            System.out.println("LENGTH = " + destination.length());
+            String imageUrl = uploadResult.get("secure_url").toString();
 
             Category cate = categoryRepository.findById(category).orElse(null);
 
@@ -86,7 +80,7 @@ public class ProductController {
             product.setSold(sold);
             product.setDescription(description);
             product.setActive(active);
-            product.setImage(fileName);
+            product.setImage(imageUrl);
             product.setCategory(cate);
             product.setCreateDate(new Date());
 
@@ -131,11 +125,14 @@ public class ProductController {
 
             if (image != null && !image.isEmpty()) {
 
-                String fileName = UUID.randomUUID() + "_" + image.getOriginalFilename();
+                Map uploadResult = cloudinary.uploader().upload(
+                        image.getBytes(),
+                        ObjectUtils.emptyMap()
+                );
 
-                image.transferTo(new File(UPLOAD_DIR + "/" + fileName));
+                String imageUrl = uploadResult.get("secure_url").toString();
 
-                product.setImage(fileName);
+                product.setImage(imageUrl);
             }
 
             return ResponseEntity.ok(productService.save(product));

@@ -166,7 +166,7 @@ function Products() {
             active: product.active
         });
 
-        setImagePreview(`${import.meta.env.VITE_SERVER_UPLOAD}/products/${product.image}`)
+        setImagePreview(product.image)
         setShowEdit(true)
     }
 
@@ -244,7 +244,7 @@ function Products() {
                                 <tr key = {product.id}>
                                     <td> {(page - 1) * 20 + index + 1} </td>
                                     <td>
-                                        <img src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${product.image}`} 
+                                        <img src={product.image} 
                                         alt={product.name}
                                         style={{
                                             width: 70,
