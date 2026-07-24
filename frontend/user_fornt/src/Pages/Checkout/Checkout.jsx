@@ -338,7 +338,6 @@ function Checkout() {
 
                                 Swal.fire("Thánh công!", "Thanh toán QR thành công", "success")
                                 navigate('/profile')
-                                window.location.reload()
                             }  } >
                                 Tôi đã thanh toán
                             </button>
