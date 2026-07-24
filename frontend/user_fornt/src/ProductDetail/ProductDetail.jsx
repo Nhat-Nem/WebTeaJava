@@ -81,15 +81,15 @@ function ProductDetail({ setCart }) {
                 {/* left */}
                 <div className="detail-left">
                     <PhotoProvider>
-                        <PhotoView src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${mainImage}`}>
-                            <img src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${mainImage}`} className="product-img" />
+                        <PhotoView src={product.image}>
+                            <img src={product.image} className="product-img" />
                         </PhotoView>
                     </PhotoProvider>
 
                     <div className="thumb-list">
                         {[product.image, ...(product.images || [])].map((img, index) => (
                             <img key={index}
-                                src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${img}`}
+                                src={product.image}
                                 className={mainImage === img ? "thumb active" : "thumb"}
                                 onClick={() => setMainImage(img)} />
                         ))}
@@ -152,7 +152,7 @@ function ProductDetail({ setCart }) {
                             to={`/product/${p.id}`} 
                             className="related-item"
                         >
-                            <img src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${p.image}`} />
+                            <img src={product.image} />
 
                             <p className="name">{p.name}</p>
 

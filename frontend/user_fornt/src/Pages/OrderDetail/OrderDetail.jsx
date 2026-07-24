@@ -52,7 +52,7 @@ function OrderDetail() {
                     {order.orderDetails?.map(item => (
                         <div key={item.id} className='product'>
 
-                            <img src={`${import.meta.env.VITE_SERVER_UPLOAD}/products/${item.product?.image}`} alt={item.product?.name}/>
+                            <img src={product.image} alt={item.product?.name}/>
 
                             <div>
                                 <p>{item.product.name}</p>
