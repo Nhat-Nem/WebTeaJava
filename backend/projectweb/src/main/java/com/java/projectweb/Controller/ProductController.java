@@ -67,7 +67,13 @@ public class ProductController {
 
             String fileName = UUID.randomUUID() + "_" + image.getOriginalFilename();
 
-            image.transferTo(new File(UPLOAD_DIR + "/" + fileName));
+            File destination = new File(UPLOAD_DIR + "/" + fileName);
+
+            image.transferTo(destination);
+
+            System.out.println("SAVE TO = " + destination.getAbsolutePath());
+            System.out.println("EXISTS = " + destination.exists());
+            System.out.println("LENGTH = " + destination.length());
 
             Category cate = categoryRepository.findById(category).orElse(null);
 
