@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         String uploadDir = System.getProperty("user.dir") + "/uploads/";
 
-        System.out.println("RESOURCE = file:" + uploadDir)
+        System.out.println("RESOURCE = file:" + uploadDir);
 
         registry.addResourceHandler("/products/**")
                 .addResourceLocations("file:uploads/products/");
