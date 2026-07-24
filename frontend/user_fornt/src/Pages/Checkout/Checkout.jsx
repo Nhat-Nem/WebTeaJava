@@ -219,7 +219,7 @@ function Checkout() {
                     {cart.map(item => (
                         <div key={item.id || item.product.id} className="order-product">
                             <div className="product-info">
-                                <img src={product.image} />
+                                <img src={item.product.image} />
                                 <div>
                                     <p>{item.product.name}</p>
 
