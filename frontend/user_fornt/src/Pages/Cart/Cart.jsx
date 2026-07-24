@@ -123,7 +123,7 @@ function Cart({cart, setCart}) {
                             <tbody>
                                 {cart.map(item => (
                                     <tr key={item.id}>
-                                        <td><img src={product.image} /></td>
+                                        <td><img src={item.image} /></td>
                                         <td>
                                             <div className="cart-product-info">
                                                 <div className="cart-product-name">
